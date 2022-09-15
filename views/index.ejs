@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passport Demo Home</title>
+  </head>
+  <body>
+    <h1>Home Page</h1>
+    <% if (currentUser) { %>
+    <h2>Welcome, <%= currentUser.username %></h2>
+    <a href="/log-out"><button type="button">Log out</button></a>
+    <% } else { %>
+    <h2>Please login</h2>
+    <% messages.forEach((message) => {%>
+    <p><%= message %></p>
+    <% }) %>
+    <form action="/login" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" placeholder="Username" />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" />
+      <br />
+      <button type="submit">Log in</button>
+      <span>&nbsp;or&nbsp;Go to</span>
+      <a href="/sign-up"><em>Sign up</em></a>
+    </form>
+    <% } %>
+    <br />
+    <a href="/restricted">Visit <em>Restricted</em></a>
+  </body>
+</html>
